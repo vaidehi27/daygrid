@@ -1,4 +1,4 @@
-import { createElement, ComponentChildren, BaseComponent, Ref, Dictionary } from '@fullcalendar/common';
+import { createElement, ComponentChildren, BaseComponent, Ref, Dictionary } from "@fullcalendar/common";
 export interface PopoverProps {
     title: string;
     extraClassNames?: string[];

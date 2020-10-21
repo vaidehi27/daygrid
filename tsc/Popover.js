@@ -1,5 +1,5 @@
 import { __assign, __extends } from "tslib";
-import { createElement, applyStyle, BaseComponent, DelayedRunner, setRef } from '@fullcalendar/common';
+import { createElement, applyStyle, BaseComponent, DelayedRunner, setRef } from "@fullcalendar/common";
 var PADDING_FROM_VIEWPORT = 10;
 var SCROLL_DEBOUNCE = 10;
 var Popover = /** @class */ (function (_super) {
@@ -35,24 +35,21 @@ var Popover = /** @class */ (function (_super) {
     Popover.prototype.render = function () {
         var theme = this.context.theme;
         var props = this.props;
-        var classNames = [
-            'fc-popover',
-            theme.getClass('popover')
-        ].concat(props.extraClassNames || []);
-        return (createElement("div", __assign({ className: classNames.join(' ') }, props.extraAttrs, { ref: this.handleRootEl }),
-            createElement("div", { className: 'fc-popover-header ' + theme.getClass('popoverHeader') },
-                createElement("span", { className: 'fc-popover-title' }, props.title),
-                createElement("span", { className: 'fc-popover-close ' + theme.getIconClass('close'), onClick: this.handleCloseClick })),
-            createElement("div", { className: 'fc-popover-body ' + theme.getClass('popoverContent') }, props.children)));
+        var classNames = ["fc-popover", theme.getClass("popover")].concat(props.extraClassNames || []);
+        return (createElement("div", __assign({ className: classNames.join(" ") }, props.extraAttrs, { ref: this.handleRootEl }),
+            createElement("div", { className: "fc-popover-header " + theme.getClass("popoverHeader") },
+                createElement("span", { className: "fc-popover-title" }, props.title),
+                createElement("span", { className: "fc-popover-close " + theme.getIconClass("close"), onClick: this.handleCloseClick })),
+            createElement("div", { className: "fc-popover-body " + theme.getClass("popoverContent") }, props.children)));
     };
     Popover.prototype.componentDidMount = function () {
-        document.addEventListener('mousedown', this.handleDocumentMousedown);
-        document.addEventListener('scroll', this.handleDocumentScroll);
+        // document.addEventListener('mousedown', this.handleDocumentMousedown)
+        document.addEventListener("scroll", this.handleDocumentScroll);
         this.updateSize();
     };
     Popover.prototype.componentWillUnmount = function () {
-        document.removeEventListener('mousedown', this.handleDocumentMousedown);
-        document.removeEventListener('scroll', this.handleDocumentScroll);
+        // document.removeEventListener('mousedown', this.handleDocumentMousedown)
+        document.removeEventListener("scroll", this.handleDocumentScroll);
     };
     // TODO: adjust on window resize
     /*
@@ -68,7 +65,9 @@ var Popover = /** @class */ (function (_super) {
         }
         var dims = rootEl.getBoundingClientRect(); // only used for width,height
         var alignment = alignmentEl.getBoundingClientRect();
-        var top = topAlignmentEl ? topAlignmentEl.getBoundingClientRect().top : alignment.top;
+        var top = topAlignmentEl
+            ? topAlignmentEl.getBoundingClientRect().top
+            : alignment.top;
         top = Math.min(top, window.innerHeight - dims.height - PADDING_FROM_VIEWPORT);
         top = Math.max(top, PADDING_FROM_VIEWPORT);
         var left;
